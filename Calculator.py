@@ -37,3 +37,6 @@ def on_info(server, info):
 	if info.is_player:
 		work(server, info)
 
+
+def on_load(server, old):
+	server.add_help_message('==<exp>', '计算表达式§7<exp>§r')
