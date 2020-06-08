@@ -4,14 +4,20 @@ from __future__ import division
 import ast
 import operator
 import math
-try:
-	import simpleeval
-except ImportError:
-	simpleeval = None
 
 
 MAX_RESULT_LEN = 1000  # maximum result string length
 MAX_POWER_LEN = 10000  # simpleeval.MAX_POWER override
+ENABLE_SIMPLEEVAL = True  # if enable simpleeval for better calculator if it's doable
+
+
+if ENABLE_SIMPLEEVAL:
+	try:
+		import simpleeval
+	except ImportError:
+		simpleeval = None
+else:
+	simpleeval = None
 
 
 def eval_or_error(func, arg):
@@ -74,7 +80,7 @@ def calc(text):
 def work(server, info):
 	if info.content.startswith('=='):
 		result = calc(info.content[2:])
-		if result is not None:
+		if result:
 			server.say(result)
 
 
