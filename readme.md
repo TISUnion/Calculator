@@ -11,4 +11,4 @@ It will calculate the expression with an extra prefix `==` such as `==1+1`. All 
 
 Try input `==3*4-(1+3.0)` in game chat and that's it
 
-If module [simpleeval](https://pypi.org/project/simpleeval/) is installed it will use `simpleeval.simple_eval` with names and functions in `math` module for advanced calculation
+If module [simpleeval](https://pypi.org/project/simpleeval/) is installed and constant `ENABLE_SIMPLEEVAL` is set to `True` it will use `simpleeval.simple_eval` with names and functions in `math` module for advanced calculation
