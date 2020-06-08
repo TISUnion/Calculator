@@ -14,11 +14,11 @@ MAX_RESULT_LEN = 1000  # maximum result string length
 MAX_POWER_LEN = 10000  # simpleeval.MAX_POWER override
 
 
-def eval_or_exception(func, arg):
+def eval_or_error(func, arg):
 	try:
 		return func(arg)
 	except Exception as e:
-		return  '{}: {}'.format(type(e).__name__, e)
+		return '{}: {}'.format(type(e).__name__, e)
 
 
 def naive_eval(text):
@@ -31,7 +31,7 @@ def naive_eval(text):
 
 	if len(text_clean) == 0:
 		return None
-	return eval_or_exception(text_clean)
+	return eval_or_error(eval, text_clean)
 
 
 def simple_eval(text):
@@ -54,7 +54,7 @@ def simple_eval(text):
 				s.names[k] = v
 			elif callable(v) and k not in ['exp', 'expm1', 'ldexp', 'pow', 'factorial']:
 				s.functions[k] = v
-	return eval_or_exception(s.eval, text)
+	return eval_or_error(s.eval, text)
 
 
 def calc(text):
