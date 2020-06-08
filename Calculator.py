@@ -63,9 +63,9 @@ def simple_eval(text):
 			elif callable(v) and k not in ['exp', 'expm1', 'ldexp', 'pow', 'factorial']:
 				s.functions[k] = v
 	s.functions.update({
-		'hex': lambda x: hex(x).replace('0x', '', 1).upper(),
-		'bin': lambda x: bin(x).replace('0b', '', 1),
-		'oct': lambda x: oct(x).replace('0o', '', 1),
+		'hex': lambda x: hex(x).replace('0x', '', 1).rstrip('L').upper(),
+		'bin': lambda x: bin(x).replace('0b', '', 1).rstrip('L'),
+		'oct': lambda x: oct(x).replace('0o', '', 1).rstrip('L'),
 	})
 	return eval_or_error(s.eval, text)
 
