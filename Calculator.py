@@ -51,7 +51,9 @@ def simple_eval(text):
 		operators=merge(simpleeval.DEFAULT_OPERATORS, {
 			ast.BitXor: operator.xor,
 			ast.BitAnd: operator.and_,
-			ast.BitOr: operator.or_
+			ast.BitOr: operator.or_,
+			ast.RShift: operator.rshift,
+			ast.LShift: operator.lshift,
 		})
 	)
 	for k, v in math.__dict__.items():
@@ -60,6 +62,11 @@ def simple_eval(text):
 				s.names[k] = v
 			elif callable(v) and k not in ['exp', 'expm1', 'ldexp', 'pow', 'factorial']:
 				s.functions[k] = v
+	s.functions.update({
+		'hex': lambda x: hex(x).replace('0x', '', 1).upper(),
+		'bin': lambda x: bin(x).replace('0b', '', 1),
+		'oct': lambda x: oct(x).replace('0o', '', 1),
+	})
 	return eval_or_error(s.eval, text)
 
 
