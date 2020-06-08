@@ -66,6 +66,7 @@ def simple_eval(text):
 		'hex': lambda x: hex(x).replace('0x', '', 1).rstrip('L').upper(),
 		'bin': lambda x: bin(x).replace('0b', '', 1).rstrip('L'),
 		'oct': lambda x: oct(x).replace('0o', '', 1).rstrip('L'),
+		'bool': bool
 	})
 	return eval_or_error(s.eval, text)
 
