@@ -1,9 +1,9 @@
 Calculator
 ------
 
-A simple in game calculator plugin for [MCDaemon](https://github.com/kafuuchino-desu/MCDaemon) or [MCDReforged](https://github.com/Fallen-Breath/MCDReforged)
+A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged)
 
-For MCDR it needs MCDR version >= `0.9.1-alpha`
+For MCDR it needs MCDR version >= `v1.0.0`
 
 ## Usage
 

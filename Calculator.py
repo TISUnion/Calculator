@@ -1,10 +1,15 @@
-# -*- coding: utf-8 -*-
-
 from __future__ import division
 import ast
 import operator
 import math
 
+PLUGIN_METADATA = {
+	'id': 'simple_calculator',
+	'version': '1.0.0',
+	'name': 'Simple in-game calculator',
+	'author': 'Fallen_Breath',
+	'link': 'https://github.com/TISUnion/Calculator'
+}
 
 MAX_RESULT_LEN = 1000  # maximum result string length
 MAX_POWER_LEN = 10000  # simpleeval.MAX_POWER override
@@ -89,13 +94,8 @@ def work(server, info):
 	if info.content.startswith('=='):
 		result = calc(info.content[2:])
 		if result:
+			info.cancel_send_to_server()
 			server.say(result)
-
-
-# MCDaemon
-def onServerInfo(server, info):
-	if info.isPlayer == 1:
-		work(server, info)
 
 
 # MCDReforged
@@ -109,13 +109,9 @@ def on_load(server, old):
 		server.logger.info('检测到 simpleeval 模块，开启高级计算模式')
 	else:
 		server.logger.info('未检测到 simpleeval 模块，使用简易模式')
-	server.add_help_message('==<exp>', '计算表达式§7<exp>§r')
+	server.register_help_message('==<exp>', '计算表达式§7<exp>§r')
 
 
 if __name__ == '__main__':
-	try:
-		raw_input
-	except NameError:
-		raw_input = input
 	while True:
-		print(calc(raw_input()))
+		print(calc(input()))
