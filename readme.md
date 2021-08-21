@@ -1,14 +1,13 @@
 Calculator
 ------
 
-A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged)
+A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) >= `2.0.0`
 
-For MCDR it needs MCDR version >= `v1.0.0`
+Requires [simpleeval](https://pypi.org/project/simpleeval/) module
 
 ## Usage
 
 It will calculate the expression with an extra prefix `==` such as `==1+1`. All unrelated chars will be ignored
 
-Try input `==3*4-(1+3.0)` in game chat and that's it
+Try input `==3**4-(1+3.0)` or `==sin(0.5*pi) + (0x1A >> 1)` in game chat and that's it
 
-If module [simpleeval](https://pypi.org/project/simpleeval/) is installed and constant `ENABLE_SIMPLEEVAL` is set to `True` it will use `simpleeval.simple_eval` with names and functions in `math` module for advanced calculation

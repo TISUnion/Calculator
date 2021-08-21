@@ -1,0 +1,18 @@
+{
+	"id": "simple_calculator",
+	"version": "1.1.0",
+	"name": "Simple in-game calculator",
+	"description": {
+		"en_us": "A Simple in-game calculator",
+		"zh_cn": "一个简单的游戏内计算器"
+	},
+	"author": [
+		"Fallen_Breath"
+	],
+	"link": "https://github.com/TISUnion/Calculator",
+	"archive_name": "SimpleCalculator-v{version}",
+	"resources": [
+		"lang",
+		"LICENSE"
+	]
+}
