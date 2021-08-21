@@ -5,6 +5,8 @@ A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-B
 
 Requires [simpleeval](https://pypi.org/project/simpleeval/) module
 
+Configure file: `config/simple_calculator/config.json`
+
 ## Usage
 
 It will calculate the expression with an extra prefix `==` such as `==1+1`. All unrelated chars will be ignored

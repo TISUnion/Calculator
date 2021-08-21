@@ -45,14 +45,16 @@ class NaiveCalculator(Calculator):
 
 
 class SimpleevalCalculator(Calculator):
-	def _calculate(self, expression: str) -> Optional[RESULT]:
+	def __init__(self, config: Optional[Configure]):
+		super().__init__(config)
+		
 		def merge(a: dict, b: dict):
 			ret = a.copy()
 			ret.update(b)
 			return ret
 
 		simpleeval.MAX_POWER = self.config.max_power_length
-		s = simpleeval.SimpleEval(
+		core = simpleeval.SimpleEval(
 			operators=merge(simpleeval.DEFAULT_OPERATORS, {
 				ast.BitXor: operator.xor,
 				ast.BitAnd: operator.and_,
@@ -64,13 +66,16 @@ class SimpleevalCalculator(Calculator):
 		for k, v in math.__dict__.items():
 			if not k.startswith('_'):
 				if type(v) in [int, float]:
-					s.names[k] = v
-				elif callable(v) and k not in ['exp', 'expm1', 'ldexp', 'pow', 'factorial']:
-					s.functions[k] = v
-		s.functions.update({
+					core.names[k] = v
+				elif callable(v) and k not in self.config.function_blacklist:
+					core.functions[k] = v
+		core.functions.update({
 			'hex': lambda x: hex(x).replace('0x', '', 1).rstrip('L').upper(),
 			'bin': lambda x: bin(x).replace('0b', '', 1).rstrip('L'),
 			'oct': lambda x: oct(x).replace('0o', '', 1).rstrip('L'),
 			'bool': bool
 		})
-		return s.eval(expression)
+		self.core = core
+
+	def _calculate(self, expression: str) -> Optional[RESULT]:
+		return self.core.eval(expression)
