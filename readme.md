@@ -1,4 +1,4 @@
-Calculator
+Simple Calculator
 ------
 
 A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) >= `2.0.0`
