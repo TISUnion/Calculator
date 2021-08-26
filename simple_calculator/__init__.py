@@ -35,7 +35,7 @@ def on_user_info(server: PluginServerInterface, info: Info):
 					h(RTextList(
 						RText.format('{}  {}  {}\n', expression, RText('->', RColor.gray), result),
 						RText('--------\n', RColor.dark_gray),
-						server.tr('simple_calculator.result_hover')
+						server.rtr('simple_calculator.result_hover')
 					)).
 					c(RAction.suggest_command, result)
 				)
@@ -49,7 +49,7 @@ def on_load(server: PluginServerInterface, old):
 	else:
 		calculator = NaiveCalculator(config)
 	server.logger.info('Used {} for calculation'.format(calculator.__class__.__name__))
-	server.register_help_message('==<expression>', server.tr('simple_calculator.help'))
+	server.register_help_message('==<expression>', server.rtr('simple_calculator.help'))
 
 
 def main():
