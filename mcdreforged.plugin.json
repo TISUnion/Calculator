@@ -9,6 +9,9 @@
 	"author": [
 		"Fallen_Breath"
 	],
+	"dependencies": {
+		"mcdreforged": ">=2.1.0-beta"
+	},
 	"link": "https://github.com/TISUnion/Calculator",
 	"archive_name": "SimpleCalculator-v{version}",
 	"resources": [

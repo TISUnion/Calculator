@@ -1,7 +1,7 @@
 Simple Calculator
 ------
 
-A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) >= `2.0.0`
+A simple in game calculator plugin for [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) >= `2.1.0`
 
 Requires [simpleeval](https://pypi.org/project/simpleeval/) module
 
